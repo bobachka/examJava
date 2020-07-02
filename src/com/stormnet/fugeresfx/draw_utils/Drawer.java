@@ -1,12 +1,11 @@
-package com.stormnet.fugeresfx.drawUtils;
+package com.stormnet.fugeresfx.draw_utils;
 
-import com.stormnet.fugeresfx.figures.Figure;
 import javafx.scene.canvas.GraphicsContext;
 
 import java.util.List;
 
-public class Drawer<T extends Figure & Drawable> {
-    private List<T> figures;
+public class Drawer<T extends Drawable> {
+    private final List<T> figures;
 
     public Drawer(List<T> figures) {
         this.figures = figures;

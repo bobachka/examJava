@@ -16,7 +16,6 @@ public class FiguresFxApp extends Application {
         window.setTitle("FiguresFX");
         Parent root = FXMLLoader.load(getClass().getResource("/view/MainScreenView.fxml"));
         window.setScene(new Scene(root, 1024, 600));
-        //window.setResizable(false);
         window.show();
     }
 }
