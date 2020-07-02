@@ -1,9 +1,9 @@
-package com.stormnet.fugeresfx.controller;
+package com.stormnet.figuresfx.controller;
 
-import com.stormnet.fugeresfx.drawUtils.Drawer;
-import com.stormnet.fugeresfx.exeptions.IncorrectShapeException;
-import com.stormnet.fugeresfx.exeptions.LowShurikenAxisCoeffExeption;
-import com.stormnet.fugeresfx.figures.*;
+import com.stormnet.figuresfx.draw_utils.Drawer;
+import com.stormnet.figuresfx.exeptions.IncorrectShapeException;
+import com.stormnet.figuresfx.exeptions.LowShurikenAxisCoeffExeption;
+import com.stormnet.figuresfx.figures.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
@@ -18,7 +18,7 @@ import java.util.Random;
 import java.util.ResourceBundle;
 
 public class MainScreenViewController implements Initializable {
-    private static final Logger logger = Logger.getLogger(MainScreenViewController.class);
+    private final Logger logger = Logger.getLogger(MainScreenViewController.class);
 
     private List<Figure> figures;
     private Random random;
@@ -34,7 +34,7 @@ public class MainScreenViewController implements Initializable {
     }
 
     private Figure createFigure(double x, double y) throws IncorrectShapeException, LowShurikenAxisCoeffExeption {
-        Figure figure = null;
+        Figure figure;
         switch (random.nextInt(5)) {
             case Figure.FIGURE_CIRCLE_ID:
                 figure = new Circle(x, y, Math.min(random.nextInt(20), 10), Color.AQUAMARINE, random.nextInt(50));

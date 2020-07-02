@@ -1,4 +1,4 @@
-package com.stormnet.fugeresfx.drawUtils;
+package com.stormnet.figuresfx.draw_utils;
 
 import javafx.scene.canvas.GraphicsContext;
 

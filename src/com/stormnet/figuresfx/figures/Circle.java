@@ -1,4 +1,4 @@
-package com.stormnet.fugeresfx.figures;
+package com.stormnet.figuresfx.figures;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -7,7 +7,7 @@ import org.apache.log4j.Logger;
 import java.util.Objects;
 
 public class Circle extends Figure {
-    private static final Logger logger = Logger.getLogger(Circle.class);
+    private final Logger logger = Logger.getLogger(Circle.class);
     private double radius;
 
     private Circle(double cx, double cy, double lineWidth, Color color) {
@@ -19,24 +19,16 @@ public class Circle extends Figure {
         this.radius = radius < 10 ? 20 : radius;
     }
 
-    public double getRadius() {
-        return radius;
-    }
-
-    public void setRadius(double radius) {
-        this.radius = radius;
-    }
-
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Circle{");
-        sb.append("radius=").append(radius);
-        sb.append(", cx=").append(cx);
-        sb.append(", cy=").append(cy);
-        sb.append(", lineWidth=").append(lineWidth);
-        sb.append(", color=").append(color);
-        sb.append('}');
-        return sb.toString();
+        return new StringBuilder("Circle{")
+                .append("radius=").append(radius)
+                .append(", cx=").append(cx)
+                .append(", cy=").append(cy)
+                .append(", lineWidth=").append(lineWidth)
+                .append(", color=").append(color)
+                .append('}')
+                .toString();
     }
 
     @Override
@@ -59,4 +51,14 @@ public class Circle extends Figure {
         gContext.setStroke(color);
         gContext.strokeOval(cx - radius, cy - radius, radius * 2, radius * 2);
     }
+
+    public double getRadius() {
+        return radius;
+    }
+
+    public void setRadius(double radius) {
+        this.radius = radius;
+    }
+
+
 }

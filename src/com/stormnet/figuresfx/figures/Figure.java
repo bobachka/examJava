@@ -1,6 +1,6 @@
-package com.stormnet.fugeresfx.figures;
+package com.stormnet.figuresfx.figures;
 
-import com.stormnet.fugeresfx.drawUtils.Drawable;
+import com.stormnet.figuresfx.draw_utils.Drawable;
 import javafx.scene.paint.Color;
 
 public abstract class Figure implements Drawable {
@@ -9,7 +9,7 @@ public abstract class Figure implements Drawable {
     public static final int FIGURE_TRIANGLE_ID = 2;
     public static final int FIGURE_SHURIKEN_ID = 3;
 
-    private int type;
+    private final int type;
     protected double cx;
     protected double cy;
     protected double lineWidth;

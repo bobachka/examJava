@@ -1,6 +1,6 @@
-package com.stormnet.fugeresfx.figures;
+package com.stormnet.figuresfx.figures;
 
-import com.stormnet.fugeresfx.exeptions.LowShurikenAxisCoeffExeption;
+import com.stormnet.figuresfx.exeptions.LowShurikenAxisCoeffExeption;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import org.apache.log4j.Logger;
@@ -9,15 +9,14 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class Shuriken extends Figure {
-    private static final Logger logger = Logger.getLogger(Shuriken.class);
+    private final Logger logger = Logger.getLogger(Shuriken.class);
 
     private double[] xPoints = new double[8];
     private double[] yPoints = new double[8];
-    private Random random;
 
     public Shuriken(double cx, double cy, double lineWidth, Color color) throws LowShurikenAxisCoeffExeption {
         super(FIGURE_SHURIKEN_ID, cx, cy, lineWidth, color);
-        random = new Random(System.currentTimeMillis());
+        Random random = new Random(System.currentTimeMillis());
         double axis = random.nextDouble() * 20 + 10;
         double shurikenAxisCoeff = random.nextDouble() * 6;
         if (shurikenAxisCoeff == 0) {
@@ -41,6 +40,30 @@ public class Shuriken extends Figure {
         yPoints[5] = cy - axis / shurikenAxisCoeff;
         yPoints[6] = cy - axis;
         yPoints[7] = cy - axis / shurikenAxisCoeff;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Shuriken shuriken = (Shuriken) o;
+        return Arrays.equals(xPoints, shuriken.xPoints) &&
+                Arrays.equals(yPoints, shuriken.yPoints);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Arrays.hashCode(xPoints);
+        result = 31 * result + Arrays.hashCode(yPoints);
+        return result;
+    }
+
+    @Override
+    public void drawFigure(GraphicsContext gContext) {
+        logger.debug("Shuriken is gonna be drawn");
+        gContext.setLineWidth(lineWidth);
+        gContext.setStroke(color);
+        gContext.strokePolygon(xPoints, yPoints, 8);
     }
 
     public double[] getXPoints() {
@@ -70,29 +93,5 @@ public class Shuriken extends Figure {
         sb.append(", color=").append(color);
         sb.append('}');
         return sb.toString();
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Shuriken shuriken = (Shuriken) o;
-        return Arrays.equals(xPoints, shuriken.xPoints) &&
-                Arrays.equals(yPoints, shuriken.yPoints);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = Arrays.hashCode(xPoints);
-        result = 31 * result + Arrays.hashCode(yPoints);
-        return result;
-    }
-
-    @Override
-    public void drawFigure(GraphicsContext gContext) {
-        logger.debug("Shuriken is gonna be drawn");
-        gContext.setLineWidth(lineWidth);
-        gContext.setStroke(color);
-        gContext.strokePolygon(xPoints, yPoints, 8);
     }
 }

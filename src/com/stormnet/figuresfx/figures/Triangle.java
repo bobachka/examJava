@@ -1,4 +1,4 @@
-package com.stormnet.fugeresfx.figures;
+package com.stormnet.figuresfx.figures;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -8,37 +8,20 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class Triangle extends Figure {
-    private static final Logger logger = Logger.getLogger(Triangle.class);
+    private final Logger logger = Logger.getLogger(Triangle.class);
 
     private double[] xPoints = new double[3];
     private double[] yPoints = new double[3];
-    private Random random;
 
     public Triangle(double cx, double cy, double lineWidth, Color color) {
         super(FIGURE_TRIANGLE_ID, cx, cy, lineWidth, color);
-        random = new Random(System.currentTimeMillis());
+        Random random = new Random(System.currentTimeMillis());
         xPoints[0] = random.nextInt(120) - 60 + cx;
         xPoints[1] = random.nextInt(120) - 60 + cx;
         xPoints[2] = random.nextInt(120) - 60 + cx;
         yPoints[0] = random.nextInt(120) - 60 + cy;
         yPoints[1] = random.nextInt(120) - 60 + cy;
         yPoints[2] = random.nextInt(120) - 60 + cy;
-    }
-
-    public double[] getXPoints() {
-        return xPoints;
-    }
-
-    public void setXPoints(double[] xPoints) {
-        this.xPoints = xPoints;
-    }
-
-    public double[] getYPoints() {
-        return yPoints;
-    }
-
-    public void setYPoints(double[] yPoints) {
-        this.yPoints = yPoints;
     }
 
     @Override
@@ -77,4 +60,21 @@ public class Triangle extends Figure {
         gContext.setStroke(color);
         gContext.strokePolygon(xPoints, yPoints, 3);
     }
+
+    public double[] getXPoints() {
+        return xPoints;
+    }
+
+    public void setXPoints(double[] xPoints) {
+        this.xPoints = xPoints;
+    }
+
+    public double[] getYPoints() {
+        return yPoints;
+    }
+
+    public void setYPoints(double[] yPoints) {
+        this.yPoints = yPoints;
+    }
+
 }
