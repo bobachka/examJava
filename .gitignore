@@ -3,3 +3,4 @@ lib/
 out/
 *.iml
 /log4j.properties
+/messages*
